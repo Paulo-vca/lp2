@@ -6,3 +6,4 @@ import br.com.ifms.lp2.javabeans.Aluno;
 
 public interface AlunoRepository extends JpaRepository<Aluno, Long>{
 }
+

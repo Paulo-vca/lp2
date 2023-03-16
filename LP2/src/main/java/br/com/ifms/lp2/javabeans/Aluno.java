@@ -5,12 +5,17 @@ package br.com.ifms.lp2.javabeans;
 
  
 
+import java.util.List;
+
 import io.swagger.annotations.ApiModelProperty;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.NotBlank;
 
@@ -28,6 +33,9 @@ public class Aluno {
 	private String nome;
 	@ApiModelProperty(value = "cpf do Aluno")
 	private String cpf;
+	@OneToMany
+	@JoinColumn(name="aluno_id")
+	private List<Telefone>telefones;
 	
 	
 	public String getNome() {
@@ -57,7 +65,7 @@ public class Aluno {
 		this.endereco = endereco;
 	}
 	
-	@Enumerated
+	@Enumerated(EnumType.STRING)
 	private EstadoCivil estadocivil;
 	
 }
